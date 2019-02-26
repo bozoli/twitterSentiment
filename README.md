@@ -2,7 +2,7 @@
 
 **More information coming soon.**
 
-## Solution architecture
+## Solution Architecture
 ![](images/Architecture.png)
 
 ## Servers
