@@ -22,6 +22,11 @@ import pickle
 # Library for HBase access
 import happybase
 
+# Servers
+hbaseServer = 'hdp-fw2c.c.twitterml.internal'
+hdfsServer = 'http://hdp-fw2c.c.twitterml.internal:50070'
+zookeeperServer = 'hdp-h91v.c.twitterml.internal:2181,hdp-fw2c.c.twitterml.internal:2181'
+
 # Creating an object of class PorterStemmer
 porter = PorterStemmer()
 
@@ -71,7 +76,7 @@ def tweet_sentiment(tweet, logmodel, top_words):
 
 # Send the tweets to be stored in HBase
 def sendToHbase(records):
-    hbaseConnection = happybase.Connection('hdp-fw2c.c.twitterml.internal')
+    hbaseConnection = happybase.Connection(hbaseServer)
     hbaseTable = hbaseConnection.table(b'twitterSentiment')
     for record in records:
         print(str(record['id']).encode('UTF-8'))
@@ -86,7 +91,7 @@ def sendToHbase(records):
 
 def main():
     # Connecting to HDFS
-    client = InsecureClient('http://hdp-fw2c.c.twitterml.internal:50070', user='admin')
+    client = InsecureClient(hdfsServer, user='admin')
     
     # Downloading the list of most popular words
     with client.read('/tmp/word_count_100k.csv', encoding='UTF-8') as csvfile: 
@@ -109,8 +114,7 @@ def main():
     ssc.checkpoint("/tmp/checkpoint")
     
     # Configuring Spark Streaming with a Kafka Consumer using a JSON deserializer 
-    kafkaStream = KafkaUtils.createStream(ssc, 
-                    'hdp-h91v.c.twitterml.internal:2181,hdp-fw2c.c.twitterml.internal:2181', 
+    kafkaStream = KafkaUtils.createStream(ssc, zookeeperServer, 
                     'spark-group', {'twitter':1}, 
                     valueDecoder=lambda m: json.loads(m.decode('UTF-8')))
     
