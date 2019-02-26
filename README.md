@@ -5,7 +5,7 @@
 ## Solution architecture
 ![](images/Architecture.png)
 
-## Servers Architecture
+## Servers
 ![](images/Servers-Architecture.png)
 
 ### Server Configuration
