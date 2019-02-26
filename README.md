@@ -9,6 +9,8 @@
 ![](images/Servers-Architecture.png)
 
 ### Server Configuration
+All servers are VMs inside Google Cloud with the following configurations:
+
 HDP Ambari: 1 vCPU, 3.75 GB
 
 HDP Node 1: 2 vCPUs, 13 GB
