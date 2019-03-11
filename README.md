@@ -20,6 +20,14 @@ HDP Node 2: 2 vCPUs, 13 GB
 Python Server: 1 vCPU, 3.75 GB
 
 ## Configuration
+### Twitter Connection
+In order to get Tweets from Twitter it's necessary to create a Developer account to have your own Access Tokens. 
+You can do it following the instructions in the following link:
+
+https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html
+
+After that you can add your Access Token information to the file twitterKeys.py
+
 ### Kafka
 The library kafka-python version 1.4.2 was used because both versions 1.4.3 and 1.4.4 seems to have some issues when using group IDs.
 
