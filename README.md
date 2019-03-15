@@ -6,7 +6,7 @@ The *twitterKafka.py* script is the one responsible to connect to Twitter and ge
 
 Then the *kafkaSpark.py* will read the data from Kafka, clean the tweets' text, run sentiment analysis on them and store the tweets and their sentiments in HBase.
 
-**More information coming soon.**
+Our sentiment analysis model is using only 2000 words in the bag-of-words due to memory constrains and has a 77.8% accuracy on the cross validation set.
 
 ## Solution Architecture
 ![](images/Architecture.png)
