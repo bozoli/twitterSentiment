@@ -4,7 +4,7 @@ This is a personal project, developed in order to practice the usage and integra
 
 The *twitterKafka.py* script is the one responsible to connect to Twitter and get in real time all tweets that include the words mentioned in the variable *twitter_search*. These tweets are them processed to extract the date, tweet ID and the full text of the tweet and send them to Kafka.
 
-Then the *kafkaSpark.py* will read the data from Kafka, clean the tweets' text, run sentiment analysis on them and store the tweets and their sentiments in HBase.
+Then the *kafkaSpark.py* script will read the data from Kafka, clean the tweets' text, run sentiment analysis on them and store the tweets and their sentiments in HBase.
 
 Our sentiment analysis model is using only 2000 words in the bag-of-words due to memory constrains and has a 77.8% accuracy on the cross validation set.
 
